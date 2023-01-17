@@ -3,10 +3,13 @@
 #include <ctime>   // for time()
 #include <algorithm> // for sort()
 
+//The time complexity of the create2DRandomList() function is O(mn), where m is the number of rows and n is the number of columns in the 2D list.
 int** create2DRandomList(int rows, int cols) {
     // Seed the random number generator
     srand(time(0));
-
+    // The space complexity of the create2DRandomList() function is also O(mn) because it creates a 2D array with dimensions mn using dynamic memory allocation.
+    //The size of the memory allocated is proportional to mn, so the space complexity is O(mn)
+    
     // Allocate memory for the 2D list
     int** list = new int*[rows];
     for (int i = 0; i < rows; i++) {
@@ -23,6 +26,9 @@ int** create2DRandomList(int rows, int cols) {
     return list;
 }
 
+//The time complexity of the sort2DListByColumn() function is O(mlog(m)) where m is the number of rows in the 2D list.
+//This is because the function first creates a vector of pairs containing the values in the given column and their corresponding row indices
+
 int** sort2DListByColumn(int** list, int rows, int cols, int columnIndex) {
     // Create a vector of pairs to store the values in the column and their corresponding row indices
     std::vector<std::pair<int, int>> columnValues;
@@ -32,6 +38,9 @@ int** sort2DListByColumn(int** list, int rows, int cols, int columnIndex) {
 
     // Sort the vector of pairs based on the column values
     std::sort(columnValues.begin(), columnValues.end());
+    
+    //The space complexity of the sort2DListByColumn() function is O(m) where m is the number of rows in the 2D list. 
+    //Because it creates a new 2D array of the same size as the input array
 
     // Create a new 2D list to store the sorted values
     int** sortedList = new int*[rows];
